@@ -1,0 +1,55 @@
+﻿@model pizzeria.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Registrarse";
+    Layout = "../Shared/_LayoutNotLogged.cshtml";
+}
+<div>
+    <md-content class="register-form" style="display:flex;align-items:center;justify-content:center;">
+        <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+            <md-card-content>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" , name="registerForm"}))
+                {
+                    @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <md-input-container class="md-block">
+                            <label>Correo electrónico</label>
+                            <input type="email" name="email" placeholder="usuario@ejemplo.com" required ng-model="formData.email"/>
+                            <span ng-show="registerForm.email.$dirty && registerForm.email.$error.required" class="text-danger"> Introduzca un e-mail</span>
+                            <span ng-show="registerForm.email.$dirty && registerForm.email.$error.email" class="text-danger"> Introduzca un e-mail con estructura ejemplo@ejemplo.com</span>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Nombre</label>
+                            <input type="text" name="name" placeholder="" required ng-model="formData.name"/>
+                            <span ng-show="registerForm.name.$dirty && registerForm.name.$error.required" class="text-danger"> Introduzca un nombre</span>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Apellidos</label>
+                            <input type="text" name="lastName" placeholder="" required ng-model="formData.lastName"/>
+                            <span ng-show="registerForm.lastName.$dirty && registerForm.lastName.$error.required" class="text-danger"> Introduzca un apellido</span>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Contraseña</label>
+                            <input type="password" name="password1" placeholder="" required ng-model="formData.password1" ng-pattern="passwordStrength"/>
+                            <span ng-show="registerForm.password1.$dirty && registerForm.password1.$error.required" class="text-danger"> Introduzca una contraseña</span>
+                            <span ng-show="registerForm.password1.$dirty && registerForm.password1.$error.pattern" class="text-danger"> La contraseña debe tener letras, números y como mínimo 5 caracteres</span>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Repita la contraseña</label>
+                            <input type="password" name="password2" placeholder="" required ng-model="formData.password2" ng-pattern="formData.password1"/>
+                            <span ng-show="registerForm.password2.$dirty && registerForm.password2.$error.required" class="text-danger"> Introduzca una contraseña</span>
+                            <span ng-show="registerForm.password2.$error.pattern" class="text-danger"> Las contraseñas no coinciden</span>
+                        </md-input-container>
+                        <div class="md-button-group" flex="gt-xs">
+                            <md-button class="md-raised md-primary" type="submit" style="min-width:100px; max-width:400px;" ng-disabled="!registerForm.$valid">Registrarse </md-button>
+                            <md-button class="md-raised md-primary" style="min-width:200px; max-width:400px;" ng-href="/">Volver</md-button>
+                        </div>
+                    }
+                </md-card-content>
+            </md-card>
+        </md-content>
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/CustomScripts/register.js")
+}

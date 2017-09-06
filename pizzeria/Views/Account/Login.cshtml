@@ -1,0 +1,39 @@
+﻿@using pizzeria.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "../Shared/_LayoutNotLogged.cshtml";
+}
+<div>
+    <md-content class="login-form" style="display:flex;align-items:center;justify-content:center;">
+        <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+            <md-card-content>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", name = "loginForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <md-input-container class="md-block">
+                        <label>Usuario</label>
+                        <input type="email" name="email" placeholder="usuario@ejemplo.com" ng-model="formData.email" required/>
+                        <span ng-show="loginForm.email.$dirty && loginForm.email.$error.required" class="text-danger"> Introduzca un e-mail</span>
+                        <span ng-show="loginForm.email.$dirty && loginForm.email.$error.email" class="text-danger"> Introduzca un e-mail con estructura ejemplo@ejemplo.com</span>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Contraseña</label>
+                        <input type="password" name="password" ng-model="formData.password" required/>
+                        <span ng-show="loginForm.password.$dirty && loginForm.password.$error.required" class="text-danger"> Introduzca una contraseña</span>
+                    </md-input-container>
+                }
+                <div class="md-button-group" flex="gt-xs" layout="space-between">
+                    <md-button class="md-raised md-primary" type="submit" ng-disabled="!loginForm.$valid" onclick="loginForm.submit()" style="max-width:300px">Login </md-button>
+                    @Html.Partial("_ExternalLoginGoogle", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </div>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</div>
+
+    @section Scripts {
+        @Scripts.Render("~/Scripts/CustomScripts/login.js")
+    }
