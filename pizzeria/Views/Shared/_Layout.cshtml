@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="Pizzeria" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
@@ -11,9 +11,9 @@
     @Styles.Render("~/Content/css")
 
 </head>
-<body ng-app="Pizzeria" layout="row" style="padding:0 !important">
+<body  ng-controller="AppCtrl"  layout="row" style="padding:0 !important">
 
-    <div ng-controller="AppCtrl" layout="row" style="min-width:100%" ng-cloak>
+    <div layout="row" style="min-width:100%" ng-cloak>
 
         <div layout="row" style="height:auto; width:auto">
 
