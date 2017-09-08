@@ -4,6 +4,13 @@
  * @license MIT
  * v1.1.4
  */
+
+@media (min-width:960px){
+    #menuButton{
+        display:none !important;
+    }
+}
+
 html, body {
   height: 100%;
   position: relative; }

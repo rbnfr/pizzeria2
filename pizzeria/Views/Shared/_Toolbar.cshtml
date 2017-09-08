@@ -1,6 +1,6 @@
 ﻿<div style="float:right; height:100%">
-    @*<md-button ng-click="toggleLeft()" class="md-raised">
-        Esconder
-    </md-button>*@
     @Html.Partial("_LoginPartial")
+    <div style="position:absolute; left:1.5%; top: 27%;" id="menuButton">
+        <i class="large material-icons" ng-click="toggleLeft()">menu</i>
+    </div>
 </div>

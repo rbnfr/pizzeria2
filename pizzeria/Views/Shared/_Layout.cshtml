@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="Pizzeria" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/angular-material.css">
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     @Styles.Render("~/Content/css")
 
 </head>
-<body ng-app="Pizzeria" layout="row" style="padding:0 !important">
+<body  ng-controller="AppCtrl"  layout="row" style="padding:0 !important">
 
-    <div ng-controller="AppCtrl" layout="row" style="min-width:100%" ng-cloak>
+    <div layout="row" style="min-width:100%" ng-cloak>
 
         <div layout="row" style="height:auto; width:auto">
 
@@ -42,7 +42,6 @@
 
                 <div>
                     @Html.Partial("_Toolbar")
-                    <md-button ng-click="toggleLeft()" class="md-raised">Menu</md-button>
                 </div>
 
             </md-toolbar>
@@ -64,6 +63,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
         
         
         <!-- Angular Material Library -->

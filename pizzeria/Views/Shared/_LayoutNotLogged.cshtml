@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/angular-material.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     @Styles.Render("~/Content/css")
 
@@ -13,7 +14,7 @@
 <body ng-app="Pizzeria" layout="row" style="padding:0 !important">
     <div layout="column" tabindex="-1" role="main" flex="" class="layout-column flex">
         <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar _md _md-toolbar-transitions" style="background-color:darkgray">
-            @Html.Partial("_Toolbar")
+            @Html.Partial("_ToolbarNotLogged")
         </md-toolbar>
         <md-content md-scroll-y="" layout="column" flex="" class="_md layout-column flex">
             <div style="padding:15px">
@@ -30,11 +31,8 @@
 
     <!-- Angular Material Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-
+    <script src="~/Scripts/CustomScripts/CustomScript.js"></script>
     @RenderSection("scripts", required: false)
-    <script type="text/javascript">
-        angular.module('Pizzeria', ['ngMaterial']);
-    </script>
-    <script src="~/Scripts/CustomScripts/toggleSidenav.js"></script>
+    
 </body>
 </html>
